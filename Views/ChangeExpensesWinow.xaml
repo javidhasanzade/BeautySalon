@@ -1,0 +1,99 @@
+﻿<Window
+    x:Class="BeautySalon.Views.ChangeExpensesWinow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:BeautySalon.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Width="400"
+    Height="450"
+    Title="Expense"
+    ResizeMode="NoResize"
+    mc:Ignorable="d">
+
+    <Window.Resources>
+        <Style TargetType="Label">
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="Foreground" Value="#FF2210D6" />
+        </Style>
+
+        <Style TargetType="TextBox">
+            <Setter Property="Height" Value="40" />
+            <Setter Property="BorderThickness" Value="2" />
+            <Setter Property="BorderBrush" Value="#FF0C7C81" />
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+
+
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition Height="40" />
+        </Grid.RowDefinitions>
+        <!--  Label  -->
+        <Label Grid.Row="0" Content="Description" />
+        <Label Grid.Row="1" Content="Amount" />
+        <Label Grid.Row="2" Content="Time " />
+
+        <!--  TextBox  -->
+        <TextBox
+            x:Name="Des"
+            Grid.Row="0"
+            Grid.Column="1"
+            FontSize="25"
+            Text="{Binding Des, UpdateSourceTrigger=PropertyChanged}" />
+
+        <TextBox
+            x:Name="Amount"
+            Grid.Row="1"
+            Grid.Column="1"
+            FontSize="25"
+            Text="{Binding Price, UpdateSourceTrigger=PropertyChanged}" />
+
+        <DatePicker
+            x:Name="DateTime"
+            Grid.Row="2"
+            Grid.Column="1"
+            FontSize="25"
+            Text="{Binding Time, UpdateSourceTrigger=PropertyChanged}" />
+
+        <Button
+            x:Name="btnExit"
+            Grid.Row="4"
+            Grid.Column="0"
+            Width="150"
+            Command="{Binding ExitCommand}"
+            Content="Exit">
+            <Button.Background>
+                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                    <GradientStop Offset="0" Color="#FF2210D6" />
+                    <GradientStop Offset="1" Color="#FF0C7C81" />
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <Button
+            x:Name="btnChange"
+            Grid.Row="4"
+            Grid.Column="1"
+            Width="150"
+            Command="{Binding ChangeExpensesCommand}"
+            Content="Change">
+            <Button.Background>
+                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                    <GradientStop Offset="0" Color="#FF2210D6" />
+                    <GradientStop Offset="1" Color="#FF0C7C81" />
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+    </Grid>
+</Window>

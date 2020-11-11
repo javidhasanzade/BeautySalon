@@ -1,0 +1,125 @@
+﻿<Page
+    x:Class="BeautySalon.Views.ExpensesPageView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:fa="http://schemas.fontawesome.io/icons/"
+    xmlns:local="clr-namespace:BeautySalon.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="ExpensesPageView"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    Background="#35186e"
+    mc:Ignorable="d">
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../Styles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+
+
+        <!-- <Button
+            Grid.Column="3"
+            Height="45"
+            Margin="2"
+            Background="#35186e"
+            Command="{Binding AddExpenseCommand}"
+            Content="NEW EXPENSES" />-->
+
+
+        <Button
+            Grid.Column="2"
+            Width="80"
+            Height="45"
+            HorizontalAlignment="Right"
+            Background="#35186e"
+            BorderBrush="#35186e"
+            Command="{Binding AddExpenseCommand}"
+            ToolTip="Добавить">
+            <fa:ImageAwesome
+                Width="45"
+                Foreground="White"
+                Icon="UserPlus" />
+
+        </Button>
+
+
+        <Button
+            Grid.Column="2"
+            Width="80"
+            Height="45"
+            HorizontalAlignment="Center"
+            Background="#35186e"
+            BorderBrush="#35186e"
+            Command="{Binding ChangeExpenceCommand}"
+            FontSize="40"
+            ToolTip="Изменить">
+            <fa:FontAwesome Foreground="White" Icon="Edit" />
+        </Button>
+
+        <Button
+            Grid.Column="2"
+            Width="80"
+            Height="45"
+            HorizontalAlignment="Left"
+            Background="#35186e"
+            BorderBrush="#35186e"
+            Command="{Binding DeleteExpenceCommand}"
+            FontSize="40"
+            ToolTip="Удалить">
+            <fa:FontAwesome Foreground="White" Icon="UserTimes" />
+        </Button>
+
+        <DataGrid
+            Grid.Row="1"
+            Grid.ColumnSpan="4"
+            AutoGenerateColumns="False"
+            ItemsSource="{Binding Expenses}"
+            SelectedItem="{Binding SelectedItem}">
+
+            <DataGrid.Columns>
+                <DataGridTextColumn
+                    Width="*"
+                    Binding="{Binding Path=Description}"
+                    Header="Description"
+                    HeaderStyle="{StaticResource CenterGridHeaderStyle}"
+                    IsReadOnly="True" />
+                <DataGridTemplateColumn MinWidth="0" Width="2" MaxWidth="2" CellStyle="{StaticResource Separator}"/>
+                <DataGridTextColumn
+                    Width="*"
+                    Binding="{Binding Path=Amount}"
+                    Header="Amount"
+                    HeaderStyle="{StaticResource CenterGridHeaderStyle}"
+                    IsReadOnly="True" />
+                <DataGridTemplateColumn MinWidth="0" Width="2" MaxWidth="2" CellStyle="{StaticResource Separator}"/>
+                <DataGridTextColumn
+                    Width="*"
+                    Binding="{Binding Path=Time}"
+                    Header="Time"
+                    HeaderStyle="{StaticResource CenterGridHeaderStyle}"
+                    IsReadOnly="True" />
+                <DataGridTemplateColumn MinWidth="0" Width="2" MaxWidth="2" CellStyle="{StaticResource Separator}"/>
+
+
+            </DataGrid.Columns>
+        </DataGrid>
+
+    </Grid>
+</Page>
+
+
+

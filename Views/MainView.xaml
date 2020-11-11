@@ -1,0 +1,224 @@
+﻿<Window
+    x:Class="BeautySalon.Views.MainView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:fa="http://schemas.fontawesome.io/icons/"
+    xmlns:local="clr-namespace:BeautySalon.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="French Studio"
+    Width="1200"
+    Height="800"
+    mc:Ignorable="d">
+    <Window.Resources>
+        <Style x:Key="myFonts">
+            <Setter Property="TextElement.FontFamily" Value="Resourse/ChelseaMarket-Regular.ttf" />
+        </Style>
+    </Window.Resources>
+    <Grid Background="#DCDCDC">
+        <!--  Разибил на сетку для удобной навигаций,и добавление новых айтемов  -->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="75" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <!--  Менюшка  -->
+        <StackPanel Grid.Row="1" Background="#7762a4">
+            <Button
+                x:Name="btnHome"
+                Height="50"
+                Margin="0,10"
+                Background="#7762a4"
+                BorderThickness="0"
+                Command="{Binding SwitchPageCommand}"
+                CommandParameter="Home">
+
+                <StackPanel
+                    Width="120"
+                    HorizontalAlignment="Right"
+                    Orientation="Horizontal">
+                    <fa:ImageAwesome
+                        Width="40"
+                        Foreground="White"
+                        Icon="Home" />
+                    <TextBlock
+                        Margin="10,0,0,0"
+                        VerticalAlignment="Center"
+                        FontSize="17"
+                        Text="Home" />
+                </StackPanel>
+            </Button>
+
+            <Button
+                x:Name="btncalendar"
+                Height="50"
+                Margin="0,10"
+                Background="#7762a4"
+                BorderThickness="0"
+                Command="{Binding SwitchPageCommand}"
+                CommandParameter="Calendar">
+                <StackPanel
+                    Width="116"
+                    HorizontalAlignment="Right"
+                    Orientation="Horizontal">
+                    <fa:ImageAwesome
+                        Width="40"
+                        Foreground="White"
+                        Icon="Calendar" />
+                    <TextBlock
+                        Width="63"
+                        Margin="10,0,0,0"
+                        VerticalAlignment="Center"
+                        FontSize="15"
+                        Text="Calendar" />
+                </StackPanel>
+            </Button>
+
+            <Button
+                x:Name="btnCliyent"
+                Height="50"
+                Margin="0,10"
+                Background="#7762a4"
+                BorderThickness="0"
+                Command="{Binding SwitchPageCommand}"
+                CommandParameter="Client">
+                <StackPanel
+                    Width="116"
+                    HorizontalAlignment="Right"
+                    Orientation="Horizontal">
+                    <fa:ImageAwesome
+                        Width="40"
+                        Foreground="White"
+                        Icon="User" />
+                    <TextBlock
+                        Width="63"
+                        Margin="10,0,0,0"
+                        VerticalAlignment="Center"
+                        FontSize="15"
+                        Text="Clients" />
+                </StackPanel>
+            </Button>
+
+            <Button
+                x:Name="btnStaff"
+                Height="50"
+                Margin="0,10"
+                Background="#7762a4"
+                BorderThickness="0"
+                Command="{Binding SwitchPageCommand}"
+                CommandParameter="Staff">
+                <StackPanel
+                    Width="116"
+                    HorizontalAlignment="Right"
+                    Orientation="Horizontal">
+                    <fa:ImageAwesome
+                        Width="40"
+                        Foreground="White"
+                        Icon="Star" />
+                    <TextBlock
+                        Width="63"
+                        Margin="10,0,0,0"
+                        VerticalAlignment="Center"
+                        FontSize="15"
+                        Text="Staff" />
+                </StackPanel>
+            </Button>
+
+            <Button
+                x:Name="btnServices"
+                Height="50"
+                Margin="0,10"
+                Background="#7762a4"
+                BorderThickness="0"
+                Command="{Binding SwitchPageCommand}"
+                CommandParameter="Services">
+
+                <StackPanel
+                    Width="116"
+                    HorizontalAlignment="Right"
+                    Orientation="Horizontal">
+                    <fa:ImageAwesome
+                        Width="40"
+                        Foreground="White"
+                        Icon="Clipboard" />
+                    <TextBlock
+                        Width="63"
+                        Margin="10,0,0,0"
+                        VerticalAlignment="Center"
+                        FontSize="15"
+                        Text="Services" />
+                </StackPanel>
+            </Button>
+
+            <Button
+                x:Name="btnExpenses"
+                Height="50"
+                Margin="0,10"
+                Background="#7762a4"
+                BorderThickness="0"
+                Command="{Binding SwitchPageCommand}"
+                CommandParameter="Expenses">
+                <StackPanel
+                    Width="116"
+                    HorizontalAlignment="Right"
+                    Orientation="Horizontal">
+                    <fa:ImageAwesome
+                        Width="40"
+                        Foreground="White"
+                        Icon="Adn" />
+                    <TextBlock
+                        Width="63"
+                        Margin="10,0,0,0"
+                        VerticalAlignment="Center"
+                        FontSize="15"
+                        Text="Expenses" />
+                </StackPanel>
+            </Button>
+
+        </StackPanel>
+        <!--  Вверхняя часть  -->
+        <StackPanel
+            Grid.Row="0"
+            Grid.Column="0"
+            Background="#7762a4">
+            <Image
+                Width="60"
+                Margin="5"
+                Source="Resourse/elf2.png" />
+        </StackPanel>
+
+
+
+        <StackPanel
+            Grid.Row="0"
+            Grid.Column="1"
+            Grid.ColumnSpan="2"
+            Background="#624e89">
+
+            <Label
+                Width="400"
+                Height="70"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                HorizontalContentAlignment="Center"
+                VerticalContentAlignment="Center"
+                Content="French Studio"
+                FontSize="50"
+                FontStyle="Italic"
+                Foreground="White"
+                Style="{DynamicResource myFonts}" />
+
+        </StackPanel>
+        <!--  Frame для перебега на другие страницы  -->
+        <Frame
+            x:Name="FrameAlpha"
+            Grid.Row="1"
+            Grid.Column="1"
+            Background="#302a40"
+            Content="{Binding SelectedViewModel}"
+            NavigationUIVisibility="Hidden" />
+    </Grid>
+</Window>

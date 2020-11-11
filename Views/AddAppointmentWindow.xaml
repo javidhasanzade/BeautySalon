@@ -1,0 +1,252 @@
+﻿<Window
+    x:Class="BeautySalon.Views.AddAppointmentWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:fa="http://schemas.fontawesome.io/icons/"
+    xmlns:local="clr-namespace:BeautySalon.Views"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:wt="http://schemas.xceed.com/wpf/xaml/toolkit" xmlns:inter="http://schemas.microsoft.com/expression/2010/interactivity"
+    Title="CalendarLogWindow"
+    Width="700"
+    Height="420"
+    ResizeMode="NoResize"
+    mc:Ignorable="d">
+
+    <Window.Resources>
+        <Style TargetType="{x:Type TextBox}">
+            <Setter Property="Margin" Value="5" />
+            <Setter Property="BorderBrush" Value="Blue" />
+            <Setter Property="BorderThickness" Value="2" />
+            <Setter Property="FontSize" Value="25" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+        </Style>
+        <Style TargetType="{x:Type Label}">
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="Foreground" Value="Blue" />
+            <Setter Property="FontSize" Value="20" />
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+
+        <DatePicker
+            Grid.Row="0"
+            Width="300"
+            Height="50"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            HorizontalContentAlignment="Center"
+            VerticalContentAlignment="Center"
+            FontSize="30"
+            FontStyle="Italic"
+            Foreground="Gray"
+            SelectedDate="{Binding SelectedDate}" />
+
+        <StackPanel Grid.Row="1" Grid.Column="0">
+            <TextBlock
+                Width="300"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Foreground="Red"
+                Text="Start time" />
+
+            <materialDesign:TimePicker
+                Width="300"
+                Height="50"
+                VerticalAlignment="Bottom"
+                FontSize="25"
+                Is24Hours="True"
+                SelectedTime="{Binding SelectedStartTime}"
+                SelectedTimeFormat="Long" />
+        </StackPanel>
+
+
+
+        <StackPanel Grid.Row="1" Grid.Column="1">
+            <TextBlock
+                Width="300"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Foreground="Red"
+                Text="Service" />
+
+
+            <ComboBox
+                Width="300"
+                Height="50"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Bottom"
+                DisplayMemberPath="Title"
+                FontSize="25"
+                ItemsSource="{Binding Services}"
+                SelectedItem="{Binding SelectedService}">
+                <inter:Interaction.Triggers>
+                    <inter:EventTrigger EventName="SelectionChanged">
+                        <inter:InvokeCommandAction Command="{Binding ServiceSelectionChanged}" />
+                    </inter:EventTrigger>
+                </inter:Interaction.Triggers>
+            </ComboBox>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Grid.Column="1">
+            <TextBlock
+                Width="300"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Foreground="Red"
+                Text="Employee" />
+
+
+            <ComboBox
+                Width="300"
+                Height="50"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Bottom"
+                DisplayMemberPath="Fullname"
+                FontSize="25"
+                ItemsSource="{Binding Staff}"
+                SelectedItem="{Binding SelectedEmployee}" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="3" Grid.Column="0">
+            <TextBlock
+                Width="300"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Foreground="Red"
+                Text="Client" />
+
+
+            <ComboBox
+                Width="280"
+                Height="50"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Bottom"
+                DisplayMemberPath="Fullname"
+                FontSize="25"
+                IsEditable="True"
+                IsTextSearchEnabled="True"
+                ItemsSource="{Binding Clients,UpdateSourceTrigger=PropertyChanged}"
+                SelectedItem="{Binding SelectedClient}"
+                />
+
+            <Canvas HorizontalAlignment="Right">
+                <Button
+                    Canvas.Right="10"
+                    Canvas.Bottom="0"
+                    Width="10"
+                    Height="50"
+                    Command="{Binding OpenAddClientWindow}" />
+            </Canvas>
+
+
+        </StackPanel>
+
+        <StackPanel Grid.Row="3" Grid.Column="1">
+            <TextBlock
+                Width="300"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Foreground="Red"
+                Text="Note" />
+
+
+            <TextBox
+                Width="300"
+                Height="50"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Bottom"
+                Text="{Binding NoteText}" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="4" Grid.Column="0">
+            <TextBlock
+                Width="300"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Foreground="Red"
+                Text="Price" />
+
+            <wt:IntegerUpDown
+                Name="myUpDownControl"
+                Width="300"
+                Height="40"
+                Margin="0,10,0,0"
+                FontSize="25"
+                Text="{Binding SelectedPrice}" />
+        </StackPanel>
+
+
+        <StackPanel Grid.Row="2" Grid.Column="0">
+
+            <TextBlock
+                Width="300"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Foreground="Red"
+                Text="End Time" />
+
+            <materialDesign:TimePicker
+                Width="300"
+                Height="50"
+                VerticalAlignment="Bottom"
+                FontSize="25"
+                Is24Hours="True"
+                SelectedTime="{Binding SelectedEndTime}"
+                SelectedTimeFormat="Long" />
+        </StackPanel>
+
+
+        <StackPanel
+            Grid.Row="4"
+            Grid.Column="1"
+            Height="40"
+            Margin="10,33,10,0"
+            VerticalAlignment="Top">
+            <Button
+                Width="150"
+                HorizontalAlignment="Left"
+                Content="ExpressCheckout">
+                <Button.Background>
+                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                        <GradientStop Offset="0" Color="#FF2210D6" />
+                        <GradientStop Offset="1" Color="#FF0C7C81" />
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
+            <Button
+                Width="150"
+                Margin="0,-32,0,0"
+                HorizontalAlignment="Right"
+                Command="{Binding AddAppointmentCommand}"
+                Content="Save Appointment">
+                <Button.Background>
+                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                        <GradientStop Offset="0" Color="#FF2210D6" />
+                        <GradientStop Offset="1" Color="#FF0C7C81" />
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
+
+
+        </StackPanel>
+
+    </Grid>
+</Window>

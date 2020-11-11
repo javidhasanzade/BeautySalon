@@ -1,0 +1,17 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:BeautySalon">
+    
+    <Style x:Key="Separator" TargetType="DataGridCell">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Rectangle VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Fill="Gray"/>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="CenterGridHeaderStyle" TargetType="DataGridColumnHeader">
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+    </Style>
+</ResourceDictionary>

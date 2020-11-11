@@ -1,0 +1,43 @@
+﻿<Application
+    x:Class="BeautySalon.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:BeautySalon"
+    xmlns:view="clr-namespace:BeautySalon.Views"
+    xmlns:viewmodels="clr-namespace:BeautySalon.ViewModels"
+    StartupUri="Views/MainView.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <DataTemplate DataType="{x:Type viewmodels:CalendarViewModel}">
+                <view:CalendarPage />
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewmodels:StaffViewModel}">
+                <view:StaffPage />
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewmodels:ClientViewModel}">
+                <view:ClientPage />
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewmodels:ServiceViewModel}">
+                <view:ServicePage />
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewmodels:ExpenseViewModel}">
+                <view:ExpensesPageView />
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewmodels:HomeViewModel}">
+                <view:HomePage />
+            </DataTemplate>
+
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Blue.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Indigo.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
